@@ -1,0 +1,10 @@
+{% extends 'yearbook/layout.html' %}
+
+{% block content %}
+<h3 class="center-align blue lighten-3">{{title}}</h3>
+<ul class="collection">
+    {% for yearbook in yearbooks %}
+        <li class="collection-item"><a href= "details/{{yearbook.id}}">{{yearbook.title}}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

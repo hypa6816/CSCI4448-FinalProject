@@ -1,0 +1,14 @@
+{% extends 'personbook/layout.html' %}
+
+{% block content %}
+<h3 class="center-align blue lighten-3">{{personbook.title}}</h3>
+<div class="card">    
+    <div class="card-content">
+        {{personbook.body}}
+    </div>
+    <div class="card-action">
+        {{personbook.created_at}}
+    </div>
+</div>
+<a href="/personbook" class="btn">Go Back</a>
+{% endblock %}

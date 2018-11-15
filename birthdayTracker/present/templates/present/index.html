@@ -1,0 +1,10 @@
+{% extends 'present/layout.html' %}
+
+{% block content %}
+<h3 class="center-align blue lighten-3">{{title}}</h3>
+<ul class="collection">
+    {% for present in presents %}
+        <li class="collection-item"><a href= "details/{{present.id}}">{{present.title}}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'yearbook/layout.html' %}
+
+{% block content %}
+<h3 class="center-align blue lighten-3">{{yearbook.title}}</h3>
+<div class="card">    
+    <div class="card-content">
+        {{yearbook.body}}
+    </div>
+    <div class="card-action">
+        {{yearbook.created_at}}
+    </div>
+</div>
+<a href="/yearbook" class="btn">Go Back</a>
+{% endblock %}
