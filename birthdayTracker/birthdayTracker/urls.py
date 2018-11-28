@@ -19,7 +19,8 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^$', views.index),
+    url(r'^', include('home.urls')),
+    url(r'^home/', include('home.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^present/', include('present.urls')),
     url(r'^yearbook/', include('yearbook.urls')),

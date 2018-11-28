@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'present',
     'yearbook',
     'personbook',
+    'home',
 ]
 
 MIDDLEWARE = [

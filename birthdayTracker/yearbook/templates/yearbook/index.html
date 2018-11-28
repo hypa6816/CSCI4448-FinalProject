@@ -2,6 +2,10 @@
 
 {% block content %}
 <h3 class="center-align blue lighten-3">{{title}}</h3>
+<form action="addNewYearbook" method="GET">
+    <button type="submit">Add New Yearbook</button>
+</form>
+
 <ul class="collection">
     {% for yearbook in yearbooks %}
         <li class="collection-item"><a href= "details/{{yearbook.id}}">{{yearbook.title}}</a></li>
