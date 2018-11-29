@@ -6,17 +6,15 @@ from django.db import models
 from datetime import datetime
 
 # Create your models here.
-class Books(models.Model):
-    title = models.CharField(max_length = 200)
-    created_at = models.DateTimeField(default=datetime.now, blank=True)
-    def __str__(self):
-        return self.title 
-    class Meta:
-        abstract = True
+
         
-class Personbooks(Books):
+class Personbooks(models.Model):
     title = models.CharField(max_length = 200)
     created_at = models.DateTimeField(default=datetime.now, blank=True)
+    lastName = models.CharField(max_length = 200)
+    firstName = models.CharField(max_length = 200)
+    relation = models.TextField()
+    birthday = models.DateTimeField(default=datetime.now, blank=True)
     def __str__(self):
         return self.title
     class Meta:

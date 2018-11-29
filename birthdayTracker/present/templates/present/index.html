@@ -2,9 +2,45 @@
 
 {% block content %}
 <h3 class="center-align blue lighten-3">{{title}}</h3>
+<form action="addNewPresent" method="GET">
+    <button type="submit">Add New Present</button>
+</form>
+{% if not deleteShow %}
+<form action="deletePresent" method="GET">
+    <button type="submit">Delete Present</button>
+</form>
+{% endif %}
+
+{% if deleteShow %}
+<form action="undoDeletePresent" method="GET">
+    <button type="submit">Delete Persent</button>
+</form>
+{% endif %}
+
+{% if not updateShow %}
+<form action="updatePresent" method="GET">
+    <button type="submit">Update Present</button>
+</form>
+{% endif %}
+
+{% if updateShow %}
+<form action="updatePresent" method="GET">
+    <button type="submit">Update Present</button>
+</form>
+{% endif %}
 <ul class="collection">
     {% for present in presents %}
         <li class="collection-item"><a href= "details/{{present.id}}">{{present.title}}</a></li>
+        {% if deleteShow %}
+            <form action="delete/{{present.id}}" method="GET">
+                <button type="submit">Delete</button>
+            </form>
+        {% endif %}
+        {% if updateShow %}
+            <form action="update/{{present.id}}" method="GET">
+                <button type="submit">Update</button>
+            </form>
+        {% endif %}
     {% endfor %}
 </ul>
 {% endblock %}

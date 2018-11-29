@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>urls.py</title>
+  <link rel="stylesheet" href="pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>urls.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">re_path</span><span class="p">,</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+<span class="kn">import</span> <span class="nn">home</span>
+<span class="kn">from</span> <span class="nn">.views</span> <span class="kn">import</span> <span class="n">PersonsView</span><span class="p">,</span> <span class="n">PersonCreateView</span><span class="p">,</span> <span class="n">PersonUpdateView</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>Main View</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">PersonsView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()),</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>Detail View</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">re_path</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^details/(?P&lt;id&gt;\d+)/$&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">details</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;details&#39;</span><span class="p">),</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <p>Add New Person View</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;addNewPerson&#39;</span><span class="p">,</span> <span class="n">PersonCreateView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()),</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      <p>Delete Person</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">re_path</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^delete/(?P&lt;id&gt;\d+)/$&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">delete</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;deletePerson&#39;</span><span class="p">,</span> <span class="n">PersonsView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">deleteShow</span><span class="o">=</span> <span class="bp">True</span><span class="p">)),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;undoDeletePerson&#39;</span><span class="p">,</span> <span class="n">PersonsView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">deleteShow</span><span class="o">=</span> <span class="bp">False</span><span class="p">)),</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      <p>Update a Person</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="n">re_path</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^update/(?P&lt;id&gt;\d+)/$&#39;</span><span class="p">,</span> <span class="n">PersonUpdateView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span> <span class="n">success_url</span><span class="o">=</span><span class="s2">&quot;/personbook/&quot;</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Person-update&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;updatePerson&#39;</span><span class="p">,</span> <span class="n">PersonsView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">updateShow</span><span class="o">=</span> <span class="bp">True</span><span class="p">)),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;undoUpdatePerson&#39;</span><span class="p">,</span> <span class="n">PersonsView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">updateShow</span><span class="o">=</span> <span class="bp">False</span><span class="p">)),</span>
+<span class="p">]</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>

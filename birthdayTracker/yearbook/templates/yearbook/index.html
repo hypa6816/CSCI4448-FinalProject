@@ -5,10 +5,27 @@
 <form action="addNewYearbook" method="GET">
     <button type="submit">Add New Yearbook</button>
 </form>
+{% if not deleteShow %}
+<form action="deleteYearbook" method="GET">
+    <button type="submit">Delete Yearbook</button>
+</form>
+{% endif %}
+
+{% if deleteShow %}
+<form action="undoDeleteYearbook" method="GET">
+    <button type="submit">Delete Yearbook</button>
+</form>
+{% endif %}
 
 <ul class="collection">
     {% for yearbook in yearbooks %}
-        <li class="collection-item"><a href= "details/{{yearbook.id}}">{{yearbook.title}}</a></li>
+        <li class="collection-item"><a href= "details/{{yearbook.id}}">{{yearbook.title}}</a>
+            {% if deleteShow %}
+            <form action="delete {{yearbook.id}}" method="GET">
+                <button type="submit">Delete</button>
+            </form>
+            {% endif %}
+        </li>
     {% endfor %}
 </ul>
 {% endblock %}

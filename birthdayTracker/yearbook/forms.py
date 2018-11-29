@@ -6,4 +6,5 @@ class YearbookModelForm(forms.ModelForm):
         model = Yearbooks
         fields=[
             'title',
+            'created_at'
         ]
